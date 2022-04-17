@@ -7,6 +7,8 @@ let tasks;
   ? (tasks = [])
   : (tasks = JSON.parse(localStorage.getItem("tasks")));
 
+let todoItemElems = [];
+
 function Task(description) {
   this.description = description;
   this.completed = false;
@@ -14,39 +16,54 @@ function Task(description) {
 
 const createTemplate = (task, index) => {
   return `
-    <div class="block_todo_item">
+    <div class="block_todo_item ${task.completed ? 'checked' : ""}">
         <div class="description">${task.description}</div>
         <div class="buttons">
-          <input class="btn-complete" type="checkbox">
-          <button class="btn-delete">Delete</button>
+          <input onclick="completeTask(${index})" class="btn-complete" type="checkbox"${
+            task.completed ? 'checked' : ""
+          }>
+          <button onclick="deleteTask(${index})" class="btn-delete">Delete</button>
         </div>
       </div>
   `;
 };
-
-// const fillHtmllist = () => {
-//   blockToDo.innerHTML = '';
-//   if(tasks.lenght > 0) {
-//     tasks.forEach((item, index) => {
-//       blockToDo.innerHTML += createTemplate(item, index);
-
-//     });
-//   }
-// };
 
 const fillHtmllist = () => {
   blockToDo.innerHTML = "";
   tasks.forEach((item, index) => {
     blockToDo.innerHTML += createTemplate(item, index);
   });
+  todoItemElems = document.querySelectorAll('.block_todo_item')
 };
 fillHtmllist();
 const updatelocal = () => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
+const completeTask = (index) => {
+  tasks[index].completed = !tasks[index].completed;
+  if(tasks[index].completed) {
+    todoItemElems[index].classList.add('checked');
+  } else {
+    todoItemElems[index].classList.remove('checked');
+  }
+  updatelocal();
+  fillHtmllist();
+};
+
+// событие на кнопку add
 addTaskbtn.addEventListener("click", () => {
   tasks.push(new Task(inputTask.value));
   updatelocal();
   fillHtmllist();
+  inputTask.value = "";
 });
+// удаление таски с задержкой 
+const deleteTask = index => {
+  todoItemElems[index].classList.add('delition')
+  setTimeout(() => {
+  tasks.splice(index, 1);
+  updatelocal();
+  fillHtmllist();
+  }, 500);
+}
