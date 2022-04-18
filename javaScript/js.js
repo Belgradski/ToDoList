@@ -1,6 +1,9 @@
 const addTaskbtn = document.getElementById("add");
 const inputTask = document.getElementById("in");
 const blockToDo = document.querySelector(".block-todo");
+const deleteAllBnt = document.getElementById("delete");
+
+
 // при загрузке страницы заполняем массив из Localstorage
 let tasks;
 !localStorage.tasks
@@ -78,3 +81,20 @@ const deleteTask = index => {
   fillHtmllist();
   }, 500);
 }
+
+
+const deleteTaskAll = () => {
+  setTimeout(() => {
+    tasks.forEach((item, index) => {
+      tasks.splice(item);
+      });
+    updatelocal();
+    fillHtmllist();
+    inputTask.value = "";
+    }, 500);
+}
+
+ 
+deleteAllBnt.addEventListener('click', () => {
+  deleteTask();
+});
