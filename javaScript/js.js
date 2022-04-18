@@ -82,19 +82,11 @@ const deleteTask = index => {
   }, 500);
 }
 
-
-const deleteTaskAll = () => {
-  setTimeout(() => {
-    tasks.forEach((item, index) => {
-      tasks.splice(item);
-      });
-    updatelocal();
-    fillHtmllist();
-    inputTask.value = "";
-    }, 500);
-}
-
- 
 deleteAllBnt.addEventListener('click', () => {
-  deleteTask();
+  tasks.forEach((item, index) => {
+    tasks.splice(item);
+    });
+  updatelocal();
+  fillHtmllist();
+  inputTask.value = "";;
 });
