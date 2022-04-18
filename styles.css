@@ -50,12 +50,13 @@ body {
   color: #fff;
 }
 
-.block_todo {
+.block-todo {
   display: flex;
   width: 100%;
+  flex-direction: column;
   flex-wrap: wrap;
   border-bottom: #fff;
-  align-items: center;
+  align-items:center;
   justify-content: center;
 }
 .block_area {
@@ -66,8 +67,9 @@ body {
 }
 .block_todo_item {
   display: flex;
-  justify-content: space-between;
+ 
   align-items: center;
+  justify-content: space-between;
   width: 350px;
   min-height: 40px;
   border: 2px solid #8a0111;
@@ -77,7 +79,7 @@ body {
   background-color: rgb(255, 255, 255);
   
 }
-.block_todo.checked {
+.block_todo_item.checked {
 background-color: darkgrey;
 opacity: 0.5;
 }

@@ -1,8 +1,8 @@
 const addTaskbtn = document.getElementById("add");
 const inputTask = document.getElementById("in");
 const blockToDo = document.querySelector(".block-todo");
+// при загрузке страницы заполняем массив из Localstorage
 let tasks;
-
 !localStorage.tasks
   ? (tasks = [])
   : (tasks = JSON.parse(localStorage.getItem("tasks")));
@@ -13,7 +13,7 @@ function Task(description) {
   this.description = description;
   this.completed = false;
 }
-
+// Динамический шаблон для HTML страницы
 const createTemplate = (task, index) => {
   return `
     <div class="block_todo_item ${task.completed ? 'checked' : ""}">
@@ -27,15 +27,26 @@ const createTemplate = (task, index) => {
       </div>
   `;
 };
-
+// Фильтрация
+const filterTask = () => {
+  const activeTasks = tasks.length && tasks.filter(item => item.completed == false);
+  const completedTask = tasks.length && tasks.filter(item => item.completed == true);
+  tasks = [...activeTasks,...completedTask];
+}
+// заполнение HTML 
 const fillHtmllist = () => {
   blockToDo.innerHTML = "";
+  if(tasks.length > 0) {
+    filterTask();
   tasks.forEach((item, index) => {
     blockToDo.innerHTML += createTemplate(item, index);
   });
   todoItemElems = document.querySelectorAll('.block_todo_item')
-};
+  }
+}
 fillHtmllist();
+
+//отправляем массив tasks в localStorage 
 const updatelocal = () => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
@@ -51,7 +62,7 @@ const completeTask = (index) => {
   fillHtmllist();
 };
 
-// событие на кнопку add
+// событие на кнопку add(берем значение из инпута и создаем новый объект и отправляем его в tasks)
 addTaskbtn.addEventListener("click", () => {
   tasks.push(new Task(inputTask.value));
   updatelocal();
