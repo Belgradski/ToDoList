@@ -88,5 +88,25 @@ deleteAllBnt.addEventListener('click', () => {
     });
   updatelocal();
   fillHtmllist();
-  inputTask.value = "";;
+  inputTask.value = "";
 });
+//глазки
+document.onmousemove = function(event) {
+  let eyes = document.querySelector('.y-7')
+  let x = (eyes.getBoundingClientRect().left) ;
+  let y = (eyes.getBoundingClientRect().top) ;
+  console.log(x + ' ' + y);
+  let radian = Math.atan2(event.pageX - x, event.pageY - y);
+  let rotation = (radian * (180 / Math.PI) * -1) + 180 + 610;
+  eyes.style.transform = `"rotate(${rotation}deg)"`;
+  document.querySelector('.y-1').style.transform = "rotate("+rotation+"deg)";
+  document.querySelector('.y-3').style.transform = "rotate("+rotation+"deg)";
+  document.querySelector('.y-5').style.transform = "rotate("+rotation+"deg)";
+  document.querySelector('.y-7').style.transform = "rotate("+rotation+"deg)";
+  document.querySelector('.y-9').style.transform = "rotate("+rotation+"deg)";
+  document.querySelector('.y-11').style.transform = "rotate("+rotation+"deg)";
+  document.querySelector('.y-13').style.transform = "rotate("+rotation+"deg)";
+  document.querySelector('.y-15').style.transform = "rotate("+rotation+"deg)";
+  document.querySelector('.y-17').style.transform = "rotate("+rotation+"deg)";
+}
+

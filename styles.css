@@ -119,3 +119,53 @@ h2 {
     opacity: 0;
   }
 }
+/* глазки */
+.y-1,.y-3,.y-5,.y-7,.y-9,.y-11,.y-13,.y-15,.y-17 {
+  width: 2px;
+  height: 2px;
+  border-radius: 100%;
+  background: white;
+  border: 3px solid rgb(255, 254, 254);
+  position: relative;
+  top:-16px;
+  left:-83px;
+}
+.y-2,.y-4,.y-6,.y-8,.y-10,.y-12,.y-14,.y-16,.y-18 {
+  width: 4px;
+  height: 4px;
+  background: rgb(9, 9, 9);
+  border-radius: 100%;
+}
+.y-3 {
+  top:-16px;
+  left:-77px;
+}
+.y-5 {
+  top:-30px;
+  left:-86px;
+}
+.y-7 {
+  top: 0px;
+  left:-129px;
+}
+.y-9 {
+  top:2px;
+  left:-94px;
+}
+.y-11 {
+  top:-16px;
+  left:-95px;
+}
+.y-13 {
+  top:-16px;
+  left:-86px;
+}
+.y-15 {
+  top:-16px;
+  left:-78px;
+}
+.y-17 {
+  top:-16px;
+  left:-71px;
+}
+
