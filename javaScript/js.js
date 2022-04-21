@@ -95,10 +95,9 @@ document.onmousemove = function(event) {
   let eyes = document.querySelector('.y-7')
   let x = (eyes.getBoundingClientRect().left) ;
   let y = (eyes.getBoundingClientRect().top) ;
-  console.log(x + ' ' + y);
   let radian = Math.atan2(event.pageX - x, event.pageY - y);
-  let rotation = (radian * (180 / Math.PI) * -1) + 180 + 610;
-  eyes.style.transform = `"rotate(${rotation}deg)"`;
+  let rotation = (radian * (180 / Math.PI) * -1) + 770;
+  eyes.style.transform = `"rotate(${rotation}deg)"`;  
   document.querySelector('.y-1').style.transform = "rotate("+rotation+"deg)";
   document.querySelector('.y-3').style.transform = "rotate("+rotation+"deg)";
   document.querySelector('.y-5').style.transform = "rotate("+rotation+"deg)";
