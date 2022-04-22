@@ -83,6 +83,9 @@ body {
 background-color: darkgrey;
 opacity: 0.5;
 }
+.btn:hover {
+opacity: 0.7;
+}
 .buttons {
   display: flex;
   justify-content: flex-end;
