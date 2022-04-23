@@ -79,6 +79,9 @@ body {
   background-color: rgb(255, 255, 255);
   
 }
+.block_todo_item:hover{
+  opacity: 0.9;
+}
 .block_todo_item.checked {
 background-color: darkgrey;
 opacity: 0.5;
